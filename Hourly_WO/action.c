@@ -4,7 +4,7 @@ Action()
 {
 	count =  atoi(lr_eval_string("{task_count}"));
 
-
+	lr_think_time(5);
 	lr_start_transaction("02_Click on Timecard Tile");
 
 	web_url("NUI_FRAMEWORK.PT_AGSTARTPAGE_NUI.GBL", 
@@ -77,7 +77,7 @@ Action()
 		LAST);
 
 	lr_end_transaction("02_Click on Timecard Tile",LR_AUTO);
-
+	lr_think_time(5);
 	lr_start_transaction("03_Change Date");
 
 	web_custom_request("TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL_2",
@@ -94,9 +94,10 @@ Action()
 		LAST);
 
 	lr_end_transaction("03_Change Date",LR_AUTO);
-
     if( count == 1 ){
-        lr_start_transaction("04_Fill Project Details");
+        	lr_think_time(5);
+
+        lr_start_transaction("04_Enter Hour");
 
         web_custom_request("TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL_3",
             "URL=https://hcmptest.llnl.gov/psc/ps/EMPLOYEE/HRMS/c/TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL",
@@ -582,9 +583,11 @@ Action()
             "A00PM&TRC$2=01&QTY11$2=&TL_QF_DESCR$2=0&USER_FIELD_2$2={work_order}&PROJ_NO_LL$2={project_code1}&PROJ_TASK_NO_LL$2={task_code1}&PUNCH_TIME_1$3=9%3A00%3A00AM&PUNCH_TIME_2$3=12%3A00%3A00PM&PUNCH_TIME_3$3=1%3A00%3A00PM&PUNCH_TIME_4$3=6%3A00%3A00PM&TRC$3=01&QTY11$3=&TL_QF_DESCR$3=0&USER_FIELD_2$3={work_order}&PROJ_NO_LL$3={project_code1}&PROJ_TASK_NO_LL$3={task_code1}&PUNCH_TIME_1$4=9%3A00%3A00AM&PUNCH_TIME_2$4=12%3A00%3A00PM&PUNCH_TIME_3$4=1%3A00%3A00PM&PUNCH_TIME_4$4=6%3A00%3A00PM&TRC$4=01&QTY11$4=&TL_QF_DESCR$4=0&USER_FIELD_2$4={work_order}&PROJ_NO_LL$4={project_code1}&PROJ_TASK_NO_LL$4={task_code1}&PUNCH_TIME_1$5=9%3A00%3A00AM&PUNCH_TIME_2$5=12%3A00%3A00PM&PUNCH_TIME_3$5=1%3A00%3A00PM&PUNCH_TIME_4$5=6%3A00%3A00PM&TRC$5=01&QTY11$5=&TL_QF_DESCR$5=0&USER_FIELD_2$5={work_order}&PROJ_NO_LL$5={project_code1}&PROJ_TASK_NO_LL$5={task_code1}&PUNCH_TIME_1$6=&PUNCH_TIME_2$6=&PUNCH_TIME_3$6=&PUNCH_TIME_4$6=&TRC$6=&QTY11$6=&TL_QF_DESCR$6=0&USER_FIELD_2$6=&PROJ_NO_LL$6=&PROJ_TASK_NO_LL$6=&PT_RCSEL_ANALYTICS=A",
             LAST);
 
-        lr_end_transaction("04_Fill Project Details",LR_AUTO);
-
+        lr_end_transaction("04_Enter Hour",LR_AUTO);
+	lr_think_time(5);
         lr_start_transaction("05_Submit");
+			web_reg_find("Text/IC=Rules have successfully been applied",
+		LAST);
 
         web_custom_request("TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL_38",
             "URL=https://hcmptest.llnl.gov/psc/ps/EMPLOYEE/HRMS/c/TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL",
@@ -642,8 +645,8 @@ Action()
 
 
     if (count == 2){
-
-        lr_start_transaction("04_Fill Project Details");
+	lr_think_time(5);
+        lr_start_transaction("04_Enter Hour");
 
         web_custom_request("TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL_3", 
             "URL=https://hcmptest.llnl.gov/psc/ps/EMPLOYEE/HRMS/c/TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL", 
@@ -1734,9 +1737,11 @@ Action()
             "PUNCH_TIME_4$10=6%3A00%3A00PM&TRC$10=01&QTY11$10=&TL_QF_DESCR$10=0&USER_FIELD_2$10=&PROJ_NO_LL$10={project_code2}&PROJ_TASK_NO_LL$10={task_code2}&PUNCH_TIME_1$11=&PUNCH_TIME_2$11=&PUNCH_TIME_3$11=&PUNCH_TIME_4$11=&TRC$11=&QTY11$11=&TL_QF_DESCR$11=0&USER_FIELD_2$11=&PROJ_NO_LL$11=&PROJ_TASK_NO_LL$11=&PT_RCSEL_ANALYTICS=A", 
             LAST);
 
-        lr_end_transaction("04_Fill Project Details",LR_AUTO);
-
+        lr_end_transaction("04_Enter Hour",LR_AUTO);
+	lr_think_time(5);
         lr_start_transaction("05_Submit");
+			web_reg_find("Text/IC=Rules have successfully been applied",
+		LAST);
 
         web_custom_request("TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL_63", 
             "URL=https://hcmptest.llnl.gov/psc/ps/EMPLOYEE/HRMS/c/TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL", 
@@ -1797,8 +1802,8 @@ Action()
     }
 
     if ( count >= 3){
-
-        lr_start_transaction("04_Fill Project Details");
+	    lr_think_time(5);
+        lr_start_transaction("04_Enter Hour");
 
         web_custom_request("TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL_3", 
             "URL=https://hcmptest.llnl.gov/psc/ps/EMPLOYEE/HRMS/c/TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL", 
@@ -3439,9 +3444,11 @@ Action()
             "PT_RCSEL_ANALYTICS=A", 
             LAST);
 
-        lr_end_transaction("04_Fill Project Details",LR_AUTO);
-
+        lr_end_transaction("04_Enter Hour",LR_AUTO);
+    	lr_think_time(5);
         lr_start_transaction("05_Submit");
+			web_reg_find("Text/IC=Rules have successfully been applied",
+		LAST);
 
         web_custom_request("TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL_88", 
             "URL=https://hcmptest.llnl.gov/psc/ps/EMPLOYEE/HRMS/c/TL_EMPLOYEE_FL.TL_ENTER_TIME_FLU.GBL", 
